@@ -5,6 +5,7 @@ version: '3'
 services:
   portainer:
     image: portainer/portainer
+    container_name: portainer
     ports:
       - 9000:9000
       - 8000:8000
@@ -17,6 +18,7 @@ services:
 
   influxdb:
     image: influxdb:1.5-alpine
+    container_name: influxdb
     volumes:
       - influxdb-storage:/var/lib/influxdb
     restart: always
@@ -25,6 +27,7 @@ services:
   
   grafana:
     image: grafana/grafana:latest
+    container_name: grafana
     ports:
       - 3000:3000
     networks:
@@ -35,7 +38,7 @@ services:
   node-red:
     image: nodered/node-red:slim
     volumes:
-      - ./data:/data
+      - ./data/flows.json:/data/flows.json
     ports:
       - 1880:1880
     restart: always
