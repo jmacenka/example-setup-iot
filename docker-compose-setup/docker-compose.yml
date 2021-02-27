@@ -35,11 +35,11 @@ services:
     restart: always
 
   node-red:
-#    image: nodered/node-red
-    build: ./node_red
+    image: nodered/node-red
+#    build: ./node_red
     container_name: node-red
     volumes:
-      - ./node_red_config/flows.json:/data/flows.json
+      - ./node_red/config/flows.json:/data/flows.json
     ports:
       - 1880:1880
     restart: always
