@@ -13,32 +13,24 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     command: -H unix:///var/run/docker.sock
     restart: always
-    networks:
-      - backend
 
   influxdb:
     image: influxdb:1.5-alpine
     container_name: influxdb
     environment:
         INFLUXDB_DB: mydb
-        INFLUXDB_ADMIN_USER: admin
-        INFLUXDB_ADMIN_PASSWORD: influxdb
-        INFLUXDB_HTTP_AUTH_ENABLED: "true"
-    volumes:
-      - influxdb-storage:/var/lib/influxdb
+    ports:
+      - 8086:8086
     restart: always
-    networks:
-      - backend
   
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
       - 3000:3000
-    networks:
-      - backend
     depends_on:
       - influxdb
+    restart: always
 
   node-red:
     image: nodered/node-red
@@ -47,11 +39,3 @@ services:
     ports:
       - 1880:1880
     restart: always
-    networks:
-      - backend
-
-networks:
-  backend:
-
-volumes:
-  influxdb-storage:
