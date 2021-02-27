@@ -4,7 +4,7 @@ version: '3'
 
 services:
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer:1.24.1
     container_name: portainer
     ports:
       - 9000:9000
@@ -24,7 +24,7 @@ services:
     restart: always
   
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:7.4.3
     container_name: grafana
     ports:
       - 3000:3000
@@ -35,7 +35,7 @@ services:
     restart: always
 
   node-red:
-#    image: nodered/node-red
+#    image: nodered/node-red:1.2.9
     build: ./node_red
     container_name: node-red
 #    volumes:
