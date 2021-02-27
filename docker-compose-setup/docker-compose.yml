@@ -36,7 +36,7 @@ services:
       - influxdb
 
   node-red:
-    image: nodered/node-red:slim
+    image: nodered/node-red
     volumes:
       - ./data/flows.json:/data/flows.json
     ports:
