@@ -1,22 +1,15 @@
 [
     {
-        "id": "828785f2.590c98",
-        "type": "tab",
-        "label": "Example software integration",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "7a61ecbf.1649f4",
         "type": "mqtt in",
-        "z": "828785f2.590c98",
+        "z": "da6120b0.b0bdd8",
         "name": "",
         "topic": "servicelocation/bce2f5a2-bafe-4fdc-b711-37eaa360f31a/realtime",
         "qos": "2",
         "datatype": "auto",
         "broker": "fba88b0a.01259",
-        "x": 296.00782775878906,
-        "y": 132.70784452557564,
+        "x": 310,
+        "y": 260,
         "wires": [
             [
                 "f8f9d9e2.97e688"
@@ -26,78 +19,18 @@
     {
         "id": "f8f9d9e2.97e688",
         "type": "function",
-        "z": "828785f2.590c98",
-        "name": "parse JSON",
-        "func": "msg.payload = JSON.parse(msg.payload)\n\nmsg1 = {};\nmsg1.measurement = \"totalPower\"\nmsg1.payload = msg.payload['totalPower']\n\nmsg2 = {};\nmsg2.measurement = \"totalReactivePower\"\nmsg2.payload = msg.payload['totalReactivePower']\nreturn [msg1, msg2];",
-        "outputs": 2,
-        "noerr": 0,
-        "x": 676.0078277587891,
-        "y": 132.70784452557564,
-        "wires": [
-            [
-                "2a9ca150.df0e4e",
-                "9b6d76c.9d04588"
-            ],
-            [
-                "2a9ca150.df0e4e"
-            ]
-        ],
-        "outputLabels": [
-            "msg1",
-            ""
-        ]
-    },
-    {
-        "id": "f01a8245.0f0d1",
-        "type": "mqtt in",
-        "z": "828785f2.590c98",
-        "name": "",
-        "topic": "/merakimv/Q2GV-QALW-575Y/light",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "fba88b0a.01259",
-        "x": 206.00782775878906,
-        "y": 252.70784452557564,
-        "wires": [
-            [
-                "e9e30266.e0b51"
-            ]
-        ]
-    },
-    {
-        "id": "e9e30266.e0b51",
-        "type": "function",
-        "z": "828785f2.590c98",
-        "name": "parse JSON",
-        "func": "msg.payload = JSON.parse(msg.payload)\n\nmsg1 = {};\nmsg1.measurement = \"lux\"\nmsg1.payload = parseFloat(msg.payload['lux'])\n\nreturn [msg1];",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 676.0078277587891,
-        "y": 252.70784452557564,
-        "wires": [
-            [
-                "2a9ca150.df0e4e"
-            ]
-        ],
-        "outputLabels": [
-            "msg1",
-            "",
-            ""
-        ]
-    },
-    {
-        "id": "3d1b0a4a.87f246",
-        "type": "function",
-        "z": "828785f2.590c98",
-        "name": "parse JSON",
-        "func": "msg.payload = JSON.parse(msg.payload)\n\nmsg1 = {};\nmsg1.measurement = \"temperature\"\nmsg1.payload = parseFloat(msg.payload['inTemp_C'])\n\nmsg2 = {};\nmsg2.measurement = \"humidity\"\nmsg2.payload = parseFloat(msg.payload['outHumidity'])\n\nmsg3 = {};\nmsg3.measurement = \"air_pressure\"\nmsg3.payload = parseFloat(msg.payload['barometer_mbar'])\n\nreturn [msg1, msg2, msg3];",
+        "z": "da6120b0.b0bdd8",
+        "name": "convert data",
+        "func": "msg.payload = JSON.parse(msg.payload)\n\nmsg1 = {};\nmsg1.measurement = \"totalPower\"\nmsg1.payload = msg.payload['totalPower']\n\nmsg2 = {};\nmsg2.measurement = \"totalReactivePower\"\nmsg2.payload = msg.payload['totalReactivePower']\n\nalarm_msg = {};\nalarm_msg.payload = \"totalPower ist bei \"+ msg1.payload + \" // totalReactivePower ist bei \" + msg2.payload\n\nreturn [alarm_msg, msg1, msg2];",
         "outputs": 3,
         "noerr": 0,
-        "x": 676.0078277587891,
-        "y": 192.70784452557564,
+        "initialize": "",
+        "finalize": "",
+        "x": 690,
+        "y": 260,
         "wires": [
             [
-                "2a9ca150.df0e4e"
+                "500117f2.714b78"
             ],
             [
                 "2a9ca150.df0e4e"
@@ -109,61 +42,124 @@
         "outputLabels": [
             "msg1",
             "",
-            ""
+            null
         ]
     },
     {
-        "id": "817edeab.8bfb",
-        "type": "mqtt in",
-        "z": "828785f2.590c98",
-        "name": "",
-        "topic": "meteocentrocadore/loop",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "fba88b0a.01259",
-        "x": 176.00782775878906,
-        "y": 192.70784452557564,
-        "wires": [
-            [
-                "3d1b0a4a.87f246"
-            ]
-        ]
-    },
-    {
-        "id": "9b6d76c.9d04588",
-        "type": "debug",
-        "z": "828785f2.590c98",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 876.0078277587891,
-        "y": 52.70784452557564,
+        "id": "d072f8f0.4a4858",
+        "type": "comment",
+        "z": "da6120b0.b0bdd8",
+        "name": "grafana-dashboard.yml",
+        "info": "{\n  \"annotations\": {\n    \"list\": [\n      {\n        \"builtIn\": 1,\n        \"datasource\": \"-- Grafana --\",\n        \"enable\": true,\n        \"hide\": true,\n        \"iconColor\": \"rgba(0, 211, 255, 1)\",\n        \"name\": \"Annotations & Alerts\",\n        \"type\": \"dashboard\"\n      }\n    ]\n  },\n  \"editable\": true,\n  \"gnetId\": null,\n  \"graphTooltip\": 0,\n  \"id\": 1,\n  \"links\": [],\n  \"panels\": [\n    {\n      \"aliasColors\": {},\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"description\": \"\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"watt\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 1,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 9,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 0\n      },\n      \"hiddenSeries\": false,\n      \"id\": 2,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"totalPower\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        },\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"hide\": false,\n          \"measurement\": \"totalReactivePower\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"refId\": \"B\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"Solaranlage\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"$$hashKey\": \"object:106\",\n          \"decimals\": null,\n          \"format\": \"watt\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": \"0\",\n          \"show\": true\n        },\n        {\n          \"$$hashKey\": \"object:107\",\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    }\n  ],\n  \"refresh\": \"5s\",\n  \"schemaVersion\": 27,\n  \"style\": \"dark\",\n  \"tags\": [],\n  \"templating\": {\n    \"list\": []\n  },\n  \"time\": {\n    \"from\": \"now-5m\",\n    \"to\": \"now\"\n  },\n  \"timepicker\": {},\n  \"timezone\": \"\",\n  \"title\": \"Example Solar-Panel\",\n  \"uid\": \"mStxoByGz\",\n  \"version\": 1\n}",
+        "x": 180,
+        "y": 680,
         "wires": []
     },
     {
         "id": "2a9ca150.df0e4e",
         "type": "influxdb out",
-        "z": "828785f2.590c98",
+        "z": "da6120b0.b0bdd8",
         "influxdb": "73d041ae.2c89d",
         "name": "",
         "measurement": "",
         "precision": "",
         "retentionPolicy": "",
-        "x": 936.0078277587891,
-        "y": 192.70784452557564,
+        "x": 1140,
+        "y": 480,
         "wires": []
     },
     {
-        "id": "d072f8f0.4a4858",
+        "id": "500117f2.714b78",
+        "type": "delay",
+        "z": "da6120b0.b0bdd8",
+        "name": "max 1/h",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "day",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 900,
+        "y": 220,
+        "wires": [
+            [
+                "900d393c.028028",
+                "ff025e2c.2303b"
+            ]
+        ]
+    },
+    {
+        "id": "900d393c.028028",
+        "type": "debug",
+        "z": "da6120b0.b0bdd8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ff025e2c.2303b",
+        "type": "twilio out",
+        "z": "da6120b0.b0bdd8",
+        "twilio": "b02f4749.ab9588",
+        "twilioType": "sms",
+        "url": "",
+        "number": "+4915123579396",
+        "name": "SMS Notification to Jan",
+        "x": 1150,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5215f2db.016324",
         "type": "comment",
-        "z": "828785f2.590c98",
-        "name": "grafana-dashboard.yml",
-        "info": "{\n  \"annotations\": {\n    \"list\": [\n      {\n        \"builtIn\": 1,\n        \"datasource\": \"-- Grafana --\",\n        \"enable\": true,\n        \"hide\": true,\n        \"iconColor\": \"rgba(0, 211, 255, 1)\",\n        \"name\": \"Annotations & Alerts\",\n        \"type\": \"dashboard\"\n      }\n    ]\n  },\n  \"editable\": true,\n  \"gnetId\": null,\n  \"graphTooltip\": 0,\n  \"id\": 1,\n  \"links\": [],\n  \"panels\": [\n    {\n      \"aliasColors\": {},\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"description\": \"\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"watt\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 1,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 9,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 0\n      },\n      \"hiddenSeries\": false,\n      \"id\": 2,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"totalPower\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        },\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"hide\": false,\n          \"measurement\": \"totalReactivePower\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"refId\": \"B\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"Solaranlage\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"$$hashKey\": \"object:106\",\n          \"decimals\": null,\n          \"format\": \"watt\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": \"0\",\n          \"show\": true\n        },\n        {\n          \"$$hashKey\": \"object:107\",\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    }\n  ],\n  \"refresh\": \"5s\",\n  \"schemaVersion\": 27,\n  \"style\": \"dark\",\n  \"tags\": [],\n  \"templating\": {\n    \"list\": []\n  },\n  \"time\": {\n    \"from\": \"now-5m\",\n    \"to\": \"now\"\n  },\n  \"timepicker\": {},\n  \"timezone\": \"\",\n  \"title\": \"Example Solar-Panel\",\n  \"uid\": \"mStxoByGz\",\n  \"version\": 1\n}",
-        "x": 160,
-        "y": 360,
+        "z": "da6120b0.b0bdd8",
+        "name": "Colleclting machine data",
+        "info": "",
+        "x": 190,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "811422ed.763d",
+        "type": "comment",
+        "z": "da6120b0.b0bdd8",
+        "name": "Converting data",
+        "info": "",
+        "x": 700,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9103eec9.cad41",
+        "type": "comment",
+        "z": "da6120b0.b0bdd8",
+        "name": "Generate SMS Notification",
+        "info": "",
+        "x": 1150,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "34546945.2418ee",
+        "type": "comment",
+        "z": "da6120b0.b0bdd8",
+        "name": "Push data to time-series-db",
+        "info": "",
+        "x": 1160,
+        "y": 380,
         "wires": []
     },
     {
@@ -186,18 +182,5 @@
         "willTopic": "",
         "willQos": "0",
         "willPayload": ""
-    },
-    {
-        "id": "73d041ae.2c89d",
-        "type": "influxdb",
-        "z": "828785f2.590c98",
-        "hostname": "influxdb",
-        "port": "8086",
-        "protocol": "http",
-        "database": "mydb",
-        "name": "",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "1.x"
     }
 ]
