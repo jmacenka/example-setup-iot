@@ -47,3 +47,6 @@ services:
 
 networks:
   backend:
+
+volumes:
+  influxdb-storage:
