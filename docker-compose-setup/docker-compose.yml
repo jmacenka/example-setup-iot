@@ -29,7 +29,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./config/grafana_datasources.yml:/etc/grafana/provisioning/datasources.yml
+      - ./grafana_provisioning/:/etc/grafana/provisioning/
     depends_on:
       - influxdb
     restart: always
@@ -38,7 +38,7 @@ services:
     image: nodered/node-red
     container_name: node-red
     volumes:
-      - ./config/node_red_flows.json:/data/flows.json
+      - ./node_red_config/flows.json:/data/flows.json
     ports:
       - 1880:1880
     restart: always
