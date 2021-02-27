@@ -1,6 +1,6 @@
 ---
 version: '3'
-# Just a demo-setup, everything is ephemeral not for dev orproduction use
+# Just a demo-setup, everything is ephemeral by design not for dev or production use
 
 services:
   portainer:
