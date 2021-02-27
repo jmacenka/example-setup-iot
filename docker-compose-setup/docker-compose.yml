@@ -35,7 +35,8 @@ services:
     restart: always
 
   node-red:
-    image: nodered/node-red
+#    image: nodered/node-red
+    build: ./node_red
     container_name: node-red
     volumes:
       - ./node_red_config/flows.json:/data/flows.json
