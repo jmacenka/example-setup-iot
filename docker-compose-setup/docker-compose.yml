@@ -12,7 +12,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: -H unix:///var/run/docker.sock
-    restart: always
 
   influxdb:
     image: influxdb:1.5-alpine
@@ -21,7 +20,6 @@ services:
         INFLUXDB_DB: mydb
     ports:
       - 8086:8086
-    restart: always
   
   grafana:
     image: grafana/grafana:7.4.3
@@ -32,14 +30,9 @@ services:
       - ./grafana_provisioning/:/etc/grafana/provisioning/
     depends_on:
       - influxdb
-    restart: always
 
   node-red:
-#    image: nodered/node-red:1.2.9
     build: ./node_red
     container_name: node-red
-#    volumes:
-#      - ./node_red/config/flows.json:/data/flows.json
     ports:
       - 1880:1880
-    restart: always
