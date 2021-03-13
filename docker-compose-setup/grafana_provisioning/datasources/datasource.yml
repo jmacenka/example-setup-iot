@@ -12,3 +12,4 @@ datasources:
     user: grafana
     password: grafana
     url: http://influxdb:8086
+    isDefault: true
