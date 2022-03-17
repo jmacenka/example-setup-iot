@@ -93,7 +93,7 @@
     "type": "function",
     "z": "bc561b1b.9eb418",
     "name": "Parse JSON for InfluxDB",
-    "func": "msg.payload = JSON.parse(msg.payload)\n\ndb_msg_1 = {};\ndb_msg_1.measurement = \"Temperature\"\ndb_msg_1.payload = Math.floor((parseFloat(msg.payload['outTemp_F'])-32)*5/9*10)/10;\n\ndb_msg_2 = {};\ndb_msg_2.measurement = \"Humidity\"\ndb_msg_2.payload = Math.floor(parseFloat(msg.payload['outHumidity'])*10)/10;\n\n\ndb_msg_3 = {};\ndb_msg_3.measurement = \"Air_Pressure\"\ndb_msg_3.payload = Math.floor(parseFloat(msg.payload['pressure_inHg'])*33.864*10)/10;\n\nalarm_msg = {};\nalarm_msg.payload = \"Nachrichth vom Demoserver: Temperatur ist \" + db_msg_1.payload + \" °C // Feuchtigkeit ist \" + db_msg_2.payload + \" %rF // Luftdruck ist \" + db_msg_3.payload + \" mbar.\";\n\nreturn [db_msg_1, db_msg_2, db_msg_3, alarm_msg];",
+    "func": "msg.payload = JSON.parse(msg.payload)\n\ndb_msg_1 = {};\ndb_msg_1.measurement = \"Temperature\"\ndb_msg_1.payload = Math.floor((parseFloat(msg.payload['outTemp_F'])-32)*5/9*10)/10;\n\ndb_msg_2 = {};\ndb_msg_2.measurement = \"Humidity\"\ndb_msg_2.payload = Math.floor(parseFloat(msg.payload['outHumidity'])*10)/10;\n\n\ndb_msg_3 = {};\ndb_msg_3.measurement = \"Air_Pressure\"\ndb_msg_3.payload = Math.floor(parseFloat(msg.payload['pressure_inHg'])*33.864*10)/10;\n\nalarm_msg = {};\nalarm_msg.payload = \"Nachricht vom Demoserver: Temperatur ist \" + db_msg_1.payload + \" °C // Feuchtigkeit ist \" + db_msg_2.payload + \" %rF // Luftdruck ist \" + db_msg_3.payload + \" mbar.\";\n\nreturn [db_msg_1, db_msg_2, db_msg_3, alarm_msg];",
     "outputs": 4,
     "noerr": 0,
     "initialize": "",
