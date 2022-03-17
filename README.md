@@ -1,5 +1,9 @@
-# example-setup-iot
-## by Jan Macenka, last edited 27.02.2021
+![Picture](https://cdn2.hubspot.net/hubfs/208250/Blog_Images/monitoring2.png)
 
-## A simple template for an UNPROTECTED Lab-Setup of node-red with grafana and influxDB
-## Just for demo-purpouse, this setup lacks any security measures!
+# Example-setup-iot
+
+by Jan Macenka, last edited 16.03.2022
+
+A simple template for an UNPROTECTED Lab-Setup of node-red with grafana and influxDB.
+Only to showcase the capabilities and quick setup times of this stack. **NOT** to be used for production!
+The setup requires manual completion through the Node-Red an Grafana UIs and lacks **ANY SECURITY** aspects on purpose.

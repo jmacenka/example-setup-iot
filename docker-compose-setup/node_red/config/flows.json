@@ -1,284 +1,173 @@
 [
-    {
-        "id": "e5722cbd.21e67",
-        "type": "comment",
-        "z": "59cf1c04.e8be64",
-        "name": "grafana-dashboard.yml",
-        "info": "{\n  \"annotations\": {\n    \"list\": [\n      {\n        \"builtIn\": 1,\n        \"datasource\": \"-- Grafana --\",\n        \"enable\": true,\n        \"hide\": true,\n        \"iconColor\": \"rgba(0, 211, 255, 1)\",\n        \"name\": \"Annotations & Alerts\",\n        \"type\": \"dashboard\"\n      }\n    ]\n  },\n  \"editable\": true,\n  \"gnetId\": null,\n  \"graphTooltip\": 0,\n  \"id\": 1,\n  \"links\": [],\n  \"panels\": [\n    {\n      \"aliasColors\": {\n        \"Temperature.mean\": \"light-red\"\n      },\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"celsius\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 0,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 12,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 0\n      },\n      \"hiddenSeries\": false,\n      \"id\": 6,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"Temperature\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"SIEMENS Showcase - Ambient Temperature\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"format\": \"celsius\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": \"40\",\n          \"min\": \"-10\",\n          \"show\": true\n        },\n        {\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    },\n    {\n      \"aliasColors\": {\n        \"Lux.mean\": \"light-yellow\"\n      },\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"description\": \"A random MQTT Lux value taken from a public Mosquitto-MQTT-Broker.\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"lux\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 0,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 23,\n        \"w\": 12,\n        \"x\": 12,\n        \"y\": 0\n      },\n      \"hiddenSeries\": false,\n      \"id\": 2,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"Lux\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"SIEMENS Showcase - Light intensity\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"format\": \"lux\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": \"0\",\n          \"show\": true\n        },\n        {\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    },\n    {\n      \"aliasColors\": {\n        \"Humidity.mean\": \"dark-blue\"\n      },\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"humidity\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 0,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 11,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 12\n      },\n      \"hiddenSeries\": false,\n      \"id\": 4,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"Humidity\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"SIEMENS Showcase - Ambient conditions\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"format\": \"humidity\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": \"100\",\n          \"min\": \"0\",\n          \"show\": true\n        },\n        {\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    }\n  ],\n  \"refresh\": \"5s\",\n  \"schemaVersion\": 27,\n  \"style\": \"dark\",\n  \"tags\": [],\n  \"templating\": {\n    \"list\": []\n  },\n  \"time\": {\n    \"from\": \"now-5m\",\n    \"to\": \"now\"\n  },\n  \"timepicker\": {},\n  \"timezone\": \"\",\n  \"title\": \"SIEMENS Showcase\",\n  \"uid\": \"82UcjByGk\",\n  \"version\": 2\n}",
-        "x": 140,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "fda0fe5a.1555a",
-        "type": "delay",
-        "z": "59cf1c04.e8be64",
-        "name": "max. 1 pro 5min",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "5",
-        "rateUnits": "minute",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 840,
-        "y": 240,
-        "wires": [
-            [
-                "7ad210f7.e4873"
-            ]
-        ]
-    },
-    {
-        "id": "6173a3e.85b1d5c",
-        "type": "comment",
-        "z": "59cf1c04.e8be64",
-        "name": "Colleclting machine data",
-        "info": "",
-        "x": 150,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "d0f36e56.b8bc6",
-        "type": "comment",
-        "z": "59cf1c04.e8be64",
-        "name": "Converting data",
-        "info": "",
-        "x": 540,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "b2d12ac8.b75a98",
-        "type": "comment",
-        "z": "59cf1c04.e8be64",
-        "name": "Send SMS Notification",
-        "info": "",
-        "x": 1080,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "75b0fa2f.af6e14",
-        "type": "comment",
-        "z": "59cf1c04.e8be64",
-        "name": "Push data to time-series-db",
-        "info": "",
-        "x": 1100,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "ab3ae4d9.0b7438",
-        "type": "mqtt in",
-        "z": "59cf1c04.e8be64",
-        "name": "",
-        "topic": "/merakimv/Q2FV-UA7G-39PY/light",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "8e2a1cc1.c555a",
-        "x": 180,
-        "y": 160,
-        "wires": [
-            [
-                "5c895304.a9bbdc"
-            ]
-        ]
-    },
-    {
-        "id": "5c895304.a9bbdc",
-        "type": "function",
-        "z": "59cf1c04.e8be64",
-        "name": "Parse JSON for InfluxDB and Alarm",
-        "func": "msg.payload = JSON.parse(msg.payload)\n\ndb_msg = {};\ndb_msg.measurement = \"Lux\";\ndb_msg.payload = msg.payload.lux;\n\nalarm_msg = {};\nalarm_msg.payload = \"Lichtstärke ist bei \" + db_msg.payload + \" lux.\"\n\nreturn [db_msg, alarm_msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 600,
-        "y": 160,
-        "wires": [
-            [
-                "a466d66f.6d5778"
-            ],
-            [
-                "fda0fe5a.1555a"
-            ]
-        ]
-    },
-    {
-        "id": "748d7e2.eeef08",
-        "type": "function",
-        "z": "59cf1c04.e8be64",
-        "name": "Parse JSON for InfluxDB",
-        "func": "msg.payload = JSON.parse(msg.payload)\n\ndb_msg_1 = {};\ndb_msg_1.measurement = \"Temperature\"\ndb_msg_1.payload = parseFloat(msg.payload['inTemp_C'])\n\ndb_msg_2 = {};\ndb_msg_2.measurement = \"Humidity\"\ndb_msg_2.payload = parseFloat(msg.payload['outHumidity'])\n\ndb_msg_3 = {};\ndb_msg_3.measurement = \"Air Pressure\"\ndb_msg_3.payload = Math.floor(parseFloat(msg.payload['barometer_mbar']))\n\nalarm_msg = {};\nalarm_msg.payload = \"Temperatur ist \" + db_msg_1.payload + \" °C // Feuchtigkeit ist \" + db_msg_2.payload + \" %rF // Luftdruck ist \" + db_msg_3.payload + \" mbar.\";\n\nreturn [db_msg_1, db_msg_2, db_msg_3, alarm_msg];",
-        "outputs": 4,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 570,
-        "y": 220,
-        "wires": [
-            [
-                "a466d66f.6d5778"
-            ],
-            [
-                "a466d66f.6d5778"
-            ],
-            [
-                "a466d66f.6d5778"
-            ],
-            [
-                "9090b233.1ac4c"
-            ]
-        ],
-        "outputLabels": [
-            "msg1",
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        "id": "8e8d8bab.09b7c8",
-        "type": "mqtt in",
-        "z": "59cf1c04.e8be64",
-        "name": "",
-        "topic": "meteocentrocadore/loop",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "35dbc1db.abc44e",
-        "x": 150,
-        "y": 220,
-        "wires": [
-            [
-                "748d7e2.eeef08"
-            ]
-        ]
-    },
-    {
-        "id": "9090b233.1ac4c",
-        "type": "delay",
-        "z": "59cf1c04.e8be64",
-        "name": "max. 1 pro 5min",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "5",
-        "rateUnits": "minute",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 840,
-        "y": 280,
-        "wires": [
-            [
-                "7ad210f7.e4873"
-            ]
-        ]
-    },
-    {
-        "id": "ee1bc207.5d042",
-        "type": "comment",
-        "z": "59cf1c04.e8be64",
-        "name": "TKN",
-        "info": "30400abde15d7b8cc610a518dde2b3b1",
-        "x": 90,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "a466d66f.6d5778",
-        "type": "influxdb out",
-        "z": "59cf1c04.e8be64",
-        "influxdb": "534caa07.6280a4",
-        "name": "",
-        "measurement": "",
-        "precision": "",
-        "retentionPolicy": "",
-        "x": 1090,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "7ad210f7.e4873",
-        "type": "twilio out",
-        "z": "59cf1c04.e8be64",
-        "twilio": "b02f4749.ab9588",
-        "twilioType": "sms",
-        "url": "",
-        "number": "+4915123579396",
-        "name": "SMS Notification to Jan",
-        "x": 1090,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "8e2a1cc1.c555a",
-        "type": "mqtt-broker",
-        "name": "Mosquitto",
-        "broker": "test.mosquitto.org",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "compatmode": false,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
-        "id": "35dbc1db.abc44e",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "test.mosquitto.org",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
-        "id": "534caa07.6280a4",
-        "type": "influxdb",
-        "z": "59cf1c04.e8be64",
-        "hostname": "influxdb",
-        "port": "8086",
-        "protocol": "http",
-        "database": "mydb",
-        "name": "",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "1.x"
-    },
-    {
-        "id": "b02f4749.ab9588",
-        "type": "twilio-api",
-        "name": "Twilio API",
-        "sid": "AC6b61dadd89e5b390cce32c4f06ce6e9e",
-        "from": "+19549476183"
-    }
+  {
+    "id": "bc561b1b.9eb418",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "e5722cbd.21e67",
+    "type": "comment",
+    "z": "bc561b1b.9eb418",
+    "name": "grafana-dashboard.yml",
+    "info": "{\n  \"annotations\": {\n    \"list\": [\n      {\n        \"builtIn\": 1,\n        \"datasource\": \"-- Grafana --\",\n        \"enable\": true,\n        \"hide\": true,\n        \"iconColor\": \"rgba(0, 211, 255, 1)\",\n        \"name\": \"Annotations & Alerts\",\n        \"type\": \"dashboard\"\n      }\n    ]\n  },\n  \"editable\": true,\n  \"gnetId\": null,\n  \"graphTooltip\": 0,\n  \"id\": 1,\n  \"links\": [],\n  \"panels\": [\n    {\n      \"aliasColors\": {\n        \"Temperature.mean\": \"light-red\"\n      },\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"celsius\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 0,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 12,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 0\n      },\n      \"hiddenSeries\": false,\n      \"id\": 6,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"Temperature\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"Ambient Temperature\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"format\": \"celsius\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": \"40\",\n          \"min\": \"-10\",\n          \"show\": true\n        },\n        {\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    },\n    {\n      \"aliasColors\": {\n        \"Lux.mean\": \"light-yellow\"\n      },\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"description\": \"A random MQTT Lux value taken from a public Mosquitto-MQTT-Broker.\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"lux\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 0,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 23,\n        \"w\": 12,\n        \"x\": 12,\n        \"y\": 0\n      },\n      \"hiddenSeries\": false,\n      \"id\": 2,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"Lux\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"Light intensity\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"format\": \"lux\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": \"0\",\n          \"show\": true\n        },\n        {\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    },\n    {\n      \"aliasColors\": {\n        \"Humidity.mean\": \"dark-blue\"\n      },\n      \"bars\": false,\n      \"dashLength\": 10,\n      \"dashes\": false,\n      \"datasource\": \"InfluxDB\",\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"custom\": {},\n          \"unit\": \"humidity\"\n        },\n        \"overrides\": []\n      },\n      \"fill\": 0,\n      \"fillGradient\": 0,\n      \"gridPos\": {\n        \"h\": 11,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 12\n      },\n      \"hiddenSeries\": false,\n      \"id\": 4,\n      \"legend\": {\n        \"avg\": false,\n        \"current\": false,\n        \"max\": false,\n        \"min\": false,\n        \"show\": true,\n        \"total\": false,\n        \"values\": false\n      },\n      \"lines\": true,\n      \"linewidth\": 1,\n      \"nullPointMode\": \"null\",\n      \"options\": {\n        \"alertThreshold\": true\n      },\n      \"percentage\": false,\n      \"pluginVersion\": \"7.4.3\",\n      \"pointradius\": 2,\n      \"points\": false,\n      \"renderer\": \"flot\",\n      \"seriesOverrides\": [],\n      \"spaceLength\": 10,\n      \"stack\": false,\n      \"steppedLine\": false,\n      \"targets\": [\n        {\n          \"groupBy\": [\n            {\n              \"params\": [\n                \"$__interval\"\n              ],\n              \"type\": \"time\"\n            },\n            {\n              \"params\": [\n                \"none\"\n              ],\n              \"type\": \"fill\"\n            }\n          ],\n          \"measurement\": \"Humidity\",\n          \"orderByTime\": \"ASC\",\n          \"policy\": \"default\",\n          \"queryType\": \"randomWalk\",\n          \"refId\": \"A\",\n          \"resultFormat\": \"time_series\",\n          \"select\": [\n            [\n              {\n                \"params\": [\n                  \"value\"\n                ],\n                \"type\": \"field\"\n              },\n              {\n                \"params\": [],\n                \"type\": \"mean\"\n              }\n            ]\n          ],\n          \"tags\": []\n        }\n      ],\n      \"thresholds\": [],\n      \"timeFrom\": null,\n      \"timeRegions\": [],\n      \"timeShift\": null,\n      \"title\": \"Ambient conditions\",\n      \"tooltip\": {\n        \"shared\": true,\n        \"sort\": 0,\n        \"value_type\": \"individual\"\n      },\n      \"type\": \"graph\",\n      \"xaxis\": {\n        \"buckets\": null,\n        \"mode\": \"time\",\n        \"name\": null,\n        \"show\": true,\n        \"values\": []\n      },\n      \"yaxes\": [\n        {\n          \"format\": \"humidity\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": \"100\",\n          \"min\": \"0\",\n          \"show\": true\n        },\n        {\n          \"format\": \"short\",\n          \"label\": null,\n          \"logBase\": 1,\n          \"max\": null,\n          \"min\": null,\n          \"show\": true\n        }\n      ],\n      \"yaxis\": {\n        \"align\": false,\n        \"alignLevel\": null\n      }\n    }\n  ],\n  \"refresh\": \"5s\",\n  \"schemaVersion\": 27,\n  \"style\": \"dark\",\n  \"tags\": [],\n  \"templating\": {\n    \"list\": []\n  },\n  \"time\": {\n    \"from\": \"now-5m\",\n    \"to\": \"now\"\n  },\n  \"timepicker\": {},\n  \"timezone\": \"\",\n  \"title\": \"Hydrogenious Showcase\",\n  \"uid\": \"82UcjByGk\",\n  \"version\": 2\n}",
+    "x": 140,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "6173a3e.85b1d5c",
+    "type": "comment",
+    "z": "bc561b1b.9eb418",
+    "name": "Colleclting machine data",
+    "info": "",
+    "x": 150,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "d0f36e56.b8bc6",
+    "type": "comment",
+    "z": "bc561b1b.9eb418",
+    "name": "Converting data",
+    "info": "",
+    "x": 540,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "b2d12ac8.b75a98",
+    "type": "comment",
+    "z": "bc561b1b.9eb418",
+    "name": "Send SMS Notification",
+    "info": "",
+    "x": 1080,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "75b0fa2f.af6e14",
+    "type": "comment",
+    "z": "bc561b1b.9eb418",
+    "name": "Push data to time-series-db",
+    "info": "",
+    "x": 1100,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "8e8d8bab.09b7c8",
+    "type": "mqtt in",
+    "z": "bc561b1b.9eb418",
+    "name": "",
+    "topic": "weather/us/va/KVAWARMS2/loop",
+    "qos": "0",
+    "datatype": "auto",
+    "broker": "84937a66.e83d78",
+    "x": 170,
+    "y": 160,
+    "wires": [["d1ccd6fb.8b7c48"]]
+  },
+  {
+    "id": "9090b233.1ac4c",
+    "type": "delay",
+    "z": "bc561b1b.9eb418",
+    "name": "max. 1 pro 5min",
+    "pauseType": "rate",
+    "timeout": "5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "5",
+    "rateUnits": "minute",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 840,
+    "y": 300,
+    "wires": [["7ad210f7.e4873"]]
+  },
+  {
+    "id": "a466d66f.6d5778",
+    "type": "influxdb out",
+    "z": "bc561b1b.9eb418",
+    "influxdb": "534caa07.6280a4",
+    "name": "",
+    "measurement": "",
+    "precision": "",
+    "retentionPolicy": "",
+    "x": 1090,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "7ad210f7.e4873",
+    "type": "twilio out",
+    "z": "bc561b1b.9eb418",
+    "twilio": "b02f4749.ab9588",
+    "twilioType": "sms",
+    "url": "",
+    "number": "+4915123579396",
+    "name": "SMS Notification to Jan",
+    "x": 1090,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "d1ccd6fb.8b7c48",
+    "type": "function",
+    "z": "bc561b1b.9eb418",
+    "name": "Parse JSON for InfluxDB",
+    "func": "msg.payload = JSON.parse(msg.payload)\n\ndb_msg_1 = {};\ndb_msg_1.measurement = \"Temperature\"\ndb_msg_1.payload = Math.floor((parseFloat(msg.payload['outTemp_F'])-32)*5/9*10)/10;\n\ndb_msg_2 = {};\ndb_msg_2.measurement = \"Humidity\"\ndb_msg_2.payload = Math.floor(parseFloat(msg.payload['outHumidity'])*10)/10;\n\n\ndb_msg_3 = {};\ndb_msg_3.measurement = \"Air Pressure\"\ndb_msg_3.payload = Math.floor(parseFloat(msg.payload['pressure_inHg'])*33.864*10)/10;\n\nalarm_msg = {};\nalarm_msg.payload = \"Temperatur ist \" + db_msg_1.payload + \" °C // Feuchtigkeit ist \" + db_msg_2.payload + \" %rF // Luftdruck ist \" + db_msg_3.payload + \" mbar.\";\n\nreturn [db_msg_1, db_msg_2, db_msg_3, alarm_msg];",
+    "outputs": 4,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "x": 570,
+    "y": 160,
+    "wires": [["a466d66f.6d5778"], ["a466d66f.6d5778"], [], ["9090b233.1ac4c"]],
+    "outputLabels": ["msg1", "", "", ""]
+  },
+  {
+    "id": "84937a66.e83d78",
+    "type": "mqtt-broker",
+    "name": "HiveMQ",
+    "broker": "broker.hivemq.com",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": false,
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  },
+  {
+    "id": "534caa07.6280a4",
+    "type": "influxdb",
+    "z": "bc561b1b.9eb418",
+    "hostname": "influxdb",
+    "port": "8086",
+    "protocol": "http",
+    "database": "mydb",
+    "name": "",
+    "usetls": false,
+    "tls": "",
+    "influxdbVersion": "1.x"
+  },
+  {
+    "id": "b02f4749.ab9588",
+    "type": "twilio-api",
+    "name": "Twilio API",
+    "sid": "AC6b61dadd89e5b390cce32c4f06ce6e9e",
+    "from": "+19549476183"
+  }
 ]
