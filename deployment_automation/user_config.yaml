@@ -1,0 +1,14 @@
+### Create a user with necessary permissions and register SSH-Keys
+users:
+  - default
+  - name: root
+    gecos: root
+    primary_group: hashicorp
+    sudo: [ALL=(ALL) NOPASSWD:ALL]
+    groups: users, admin
+    ssh-import-id:
+    lock_passwd: false
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGYNcVtAiydUoOxrY7vnfyMyzhUNCValGYz9wLARxHX9 jan.macenka@gmail.com
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL8x0zrceoVOJiBwShQIBUB82heVIjcEnvgNO848Gw5q code.macenka.de
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8SUi+XH3w6JUwsJtxoUGy5QUB4jEdQJU2FQ3sMyO61 jan.macenka@siemens-healthineers.com

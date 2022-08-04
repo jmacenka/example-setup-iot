@@ -1,0 +1,6 @@
+---
+- name: Start Project with docker-compose script
+  community.docker.docker-compose:
+    project_src: ~/app/docker-compose-setup/
+    build: yes
+    restarted: yes

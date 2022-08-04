@@ -1,0 +1,7 @@
+---
+- name: Download the Code-Repository
+  git:
+    repo: 'https://git.macenka.de/JanMacenkaITConsulting/example-setup-iot' # TODO: resolve this from .env-File
+    dest: ~/app # TODO: Make this dynamic
+    clone: yes
+    update: yes

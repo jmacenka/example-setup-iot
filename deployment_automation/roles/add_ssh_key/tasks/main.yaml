@@ -1,0 +1,6 @@
+---
+- name: Add SSH key to new user "demo"
+  authorized_key:
+    user: demo
+    state: present
+    key: "{{ lookup('file', pub_key) }}"

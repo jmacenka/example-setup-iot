@@ -1,0 +1,5 @@
+---
+- name: Setup a new user
+  user:
+    name: demo
+    grou: sudo

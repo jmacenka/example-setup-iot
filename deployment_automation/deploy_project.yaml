@@ -1,0 +1,8 @@
+---
+- become: yes
+  hosts: all
+  roles:
+    - role: create_new_user
+    - role: add_ssh_key
+    - role: download_repo
+    - role: deploy_project
