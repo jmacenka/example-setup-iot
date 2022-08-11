@@ -1,0 +1,27 @@
+# Ansible role to make sure required CLI tools are avaliable on the target system
+---
+- name: Ansible apt update cache if it is older than 1 hour
+  register: updatesys
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install GIT
+  apt:
+    name: git
+    state: present
+
+- name: Make sure Docker is installed through apt
+  apt:
+    name: docker
+    state: present
+
+- name: Make sure the user is in the docker-group
+  user:
+    name: demo
+    group: docker
+
+- name: Make sure docker-compose is installed through apt
+  apt:
+    name: docker-compose
+    state: present

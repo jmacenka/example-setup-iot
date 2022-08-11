@@ -1,3 +1,5 @@
+# Ansible role to transfer the ephemeral SSH key to the server
+# TODO: Check if even necessary as the user_config.yaml sould already do this during deployment.
 ---
 - name: Add SSH key to new user "demo"
   authorized_key:

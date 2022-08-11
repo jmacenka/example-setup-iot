@@ -1,0 +1,10 @@
+# ansible-playbook which will will invoke a sequence of defined roles
+---
+- become: yes # become the root user
+  hosts: all # run this for all hosts in the hosts.ini-file
+  roles: # apply these roles in this sequence
+    - role: create_new_user
+    - role: add_ssh_key
+    - role: install_basic_dependencies
+    - role: download_repo
+    - role: deploy_project

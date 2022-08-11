@@ -1,4 +1,5 @@
-### Create a user with necessary permissions and register SSH-Keys
+# Configuratoin that will be utilized by the terraform-script on provisioning the new DigitalOcean ressources
+# Create a user with necessary permissions and register SSH-Keys
 users:
   - default
   - name: root

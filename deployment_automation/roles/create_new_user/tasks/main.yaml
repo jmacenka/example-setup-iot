@@ -1,5 +1,6 @@
+# Ansible role to create a new user "demo" and put him in the "SUDOERS group"
 ---
 - name: Setup a new user
   user:
     name: demo
-    grou: sudo
+    group: sudo
