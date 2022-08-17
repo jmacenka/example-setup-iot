@@ -5,3 +5,16 @@ resource "tls_private_key" "ssh" {
     algorithm = "RSA"
     rsa_bits = "4096"
 } # TODO: Figure out how to provide this as a file to the ansible-playbook command
+
+resource "local_file" "ssh_public_key" { 
+    filename = "${path.module}/ssh/id_rsa.pub"
+    #content = tls_private_key.ssh.public_key_openssh
+    content = tls_private_key.ssh
+}
+
+resource "local_file" "ssh_privat_key" { 
+    filename = "${path.module}/ssh/id_rsa"
+    #content = tls_private_key.ssh.private_key_openssh
+    content = tls_private_key.ssh
+
+}

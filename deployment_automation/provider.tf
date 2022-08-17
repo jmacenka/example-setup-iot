@@ -7,6 +7,10 @@ terraform {
         source = "digitalocean/digitalocean"
         version = "~> 2.0"
     }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "3.0.0"
+    }
   }
 }
 
@@ -15,15 +19,6 @@ variable "do_token" {
     type = string
     description = "Please provide your DigitalOcean API Key to access the API/Backend via Terraform. If unclear visit: https://docs.digitalocean.com/reference/api/create-personal-access-token/"
     sensitive = true
-}
-
-# TODO: Check if needed, if not cleanup the code
-variable "pvt_key" {
-    default = "C:\\Users\\z003kc0z\\.ssh\\id_jan_SHS_ed25519"
-}
-# TODO: Check if needed, if not cleanup the code
-variable "pub_key" {
-    default = "C:\\Users\\z003kc0z\\.ssh\\id_jan_SHS_ed25519.pub"
 }
 
 # hand over the DigitalOcean token to the provider-object

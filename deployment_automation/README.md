@@ -14,7 +14,7 @@ This is meant to show that in a fully automated CD-Pipeline, it takes about 30s 
 
 To run the deployment peform the following steps:
 
-1. Make sure you have the require dependencies installed on your machine
+1. Make sure you have the require dependencies installed on your local machine as it will have to perform the terraform and ansible commands through an SSH pipeline
    - [SSH](https://docs.microsoft.com/de-de/windows-server/administration/openssh/openssh_install_firstuse) (only required on Windows as Linux and Mac usually come with essential CLI-tools preinstalled)
    - [GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
    - [terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)

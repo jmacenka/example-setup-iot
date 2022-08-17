@@ -182,4 +182,4 @@ terraform.rc
 # OWN Exclusions
 .env
 .dccache
-
+ssh/*

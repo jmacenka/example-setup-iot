@@ -44,7 +44,7 @@ resource "digitalocean_droplet" "demo" {
     }
 
     provisioner "local-exec" {
-        command = "ansible-playbook -u root -i '${self.ipv4_address}' --private-key ${tls_private_key.ssh.private_key_openssh} -e 'pub_key=${tls_private_key.ssh.public_key_openssh}' ansible_playbook_deploy_project.yaml"
+        command = "ansible-playbook -u root -i '${self.ipv4_address}' --private-key './ssh/id_rsa' -e 'pub_key=./ssh/id_rsa.pub' ansible_playbook_deploy_project.yaml"
         #command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i '${self.ipv4_address}' --private-key ${tls_private_key.ssh.private_key_openssh} -e 'pub_key=${tls_private_key.ssh.public_key_openssh}' ansible_playbook_deploy_project.yaml"
         #command = "ansible-playbook -u root -i '${self.ipv4_address}' deploy_project.yaml"
     }
