@@ -1,0 +1,8 @@
+# Config.py file to hold configuration data
+# Created by Jan Macenka @ 24 Jan 2023
+# Copy this file, remove the .TEMPLATE part of the filename and input the values, make sure that your transfer mechanism is secure.
+
+# You need to input your API key here. In a production setup you need to take care of secrets in a better way.
+TWILIO_ACCOUNT_SID = ''
+TWILIO_AUTH_TOKEN = ''
+TWILIO_FROM_PHONE_NUMBER = '+19549476183'

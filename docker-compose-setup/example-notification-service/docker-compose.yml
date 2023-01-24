@@ -1,0 +1,9 @@
+# docker-compose deployment script for example-notification-service
+
+version: "3"
+
+services:
+  example-notification-service:
+    build: .
+    ports:
+      - 8080:8080

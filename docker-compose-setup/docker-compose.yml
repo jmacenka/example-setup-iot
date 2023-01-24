@@ -36,3 +36,9 @@ services:
     container_name: node-red
     ports:
       - 1880:1880
+
+  # example-notification-service:
+  #   container_name: example-notification-service
+  #   build: example-notification-service
+  #   ports:
+  #     - 8080:8080
